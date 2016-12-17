@@ -40,6 +40,7 @@ function build() {
     .pipe(cssnano())
     .pipe(rev())
     .pipe(cssFilter.restore)
+    //.pipe($.replace('../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
     .pipe(revReplace())
     .pipe(sourcemaps.write('maps'))
     .pipe(htmlFilter)
@@ -47,3 +48,5 @@ function build() {
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(conf.path.dist()));
 }
+
+
