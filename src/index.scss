@@ -1,5 +1,8 @@
 //@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
-$icon-font-path: '../fonts' !default;
+
+//overwrite the default path set by bootstrap _variables.scss for $icon-font-path where it pointed to ../fonts/bootstrap
+$icon-font-path: '../fonts/' !default;
+
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
