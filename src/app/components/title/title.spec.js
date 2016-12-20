@@ -2,7 +2,7 @@ describe('title component', function () {
   beforeEach(module('app', function ($provide) {
     $provide.factory('fountainTitle', function () {
       return {
-        templateUrl: 'app/title.html'
+        templateUrl: 'app/components/title/title.html'
       };
     });
   }));
