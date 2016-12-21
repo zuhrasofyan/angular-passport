@@ -6,13 +6,13 @@ angular
     controllerAs: 'vm'
   });
 
-function quoteController($http, store, AuthService) {
+function quoteController($http, store, UserService) {
   vm = this;
-  vm.privateQuote = {};
+  vm.privateQuote = null;
   
   
   function test(){
-    vm.apa = AuthService.getCurrentToken();
+    vm.apa = UserService.getCurrentToken();
     //vm.apa = APIInterceptor.request();
   }
   vm.test = test;
