@@ -1,2 +1,2 @@
 angular
-  .module('app', ['ui.router', 'LocalStorageModule']);
+  .module('app', ['ui.router', 'angular-storage', 'angular-jwt']);
