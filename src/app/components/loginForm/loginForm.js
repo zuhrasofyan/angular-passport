@@ -7,7 +7,7 @@ angular
     controllerAs: 'vm'
   });
 
-function loginFormController ($scope, $http, $q, store, $location, jwtHelper){
+function loginFormController ($scope, $http, $q, store, $location, jwtHelper, AuthService){
     var vm = this;
     var deferred = $q.defer();
 
@@ -15,23 +15,15 @@ function loginFormController ($scope, $http, $q, store, $location, jwtHelper){
     vm.formLogin = {};
 
     vm.myToken = '';
-
-    function submitLogin(loginData) {
-      console.log(loginData.email);
-      $http.post('http://localhost:1337/auth/login', {
-        username: loginData.email,
-        password: loginData.password
-      }).then(function(result){
-        console.log(result);
-        vm.result = result;
-        store.set('user', result.data.user);
-        store.set('token', result.data.token );
-        //$location.path('/');
-        console.log(store.get('token'));
-        vm.myToken = jwtHelper.decodeToken(store.get('token'));
-        console.log(jwtHelper.getTokenExpirationDate(store.get('token')));
-
-      })
+    
+    function clickLogin(data) {
+      AuthService.submitLogin(data);
+      if (store.get('token')) {
+        vm.myToken = store.get('token');
+      }
+      
     }
-    vm.submitLogin = submitLogin;
+    vm.clickLogin = clickLogin;
+    
+    //vm.submitLogin = AuthService.submitLogin(vm.formLogin);
   }
