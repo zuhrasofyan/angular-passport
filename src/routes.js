@@ -21,6 +21,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
       component: 'dashboard'
     });
 
+    // otherwise will take care of routing the user to the specified url
     $urlRouterProvider.otherwise('/');
 
     $httpProvider.interceptors.push('APIInterceptor');

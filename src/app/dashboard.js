@@ -1,5 +1,3 @@
-
-
 angular
   .module('app')
   .component('dashboard', {
@@ -10,5 +8,4 @@ angular
 
 function dashboardController() {
   vm = this;
-  
 }

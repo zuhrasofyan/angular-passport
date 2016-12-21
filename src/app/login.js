@@ -7,7 +7,6 @@ angular
     controllerAs: 'vm'
   });
 
-function loginController (){
-    var vm = this;
-     
+function loginController () {
+  var vm = this;     
 }
