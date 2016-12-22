@@ -2,10 +2,16 @@ angular
   .module('app')
   .service('UserService', UserService);
 
-function UserService(store) {
+function UserService(store, jwtHelper) {
   vm =this;
   var currentUser = null, currentToken = null;
 
+  function setCurrentToken (token) {
+    currentToken = token;
+    store.set('token', token);
+    return currentToken;
+  }
+  
   function setCurrentUser (user) {
     currentUser = user;
     store.set('user', user);
@@ -23,10 +29,14 @@ function UserService(store) {
     if (!currentToken) {
       currentToken = store.get('token');
     }
+    // if (jwtHelper.isTokenExpired(store.get('token'))) {
+    //   currentToken = null;
+    // }
     return currentToken;
   }
 
   vm.setCurrentUser = setCurrentUser;
+  vm.setCurrentToken = setCurrentToken;
   vm.getCurrentUser = getCurrentUser;
   vm.getCurrentToken = getCurrentToken;
 
