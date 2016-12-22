@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .service('AuthService', function ($http, store, $location){
+  .service('AuthService', function ($http, $rootScope, store, $location, UserService, authManager){
     var vm = this;
     //var isAuthenticated = false;
     
@@ -9,10 +9,19 @@ angular
         username: loginData.email,
         password: loginData.password
       }).then(function(result){
-        console.log(result);
-        store.set('user', result.data.user);
-        store.set('token', result.data.token );
-        $location.path('/dashboard');
+        //console.log(result);
+        if (store.get('user')) {
+          store.remove('user');
+        }
+        if (store.get('token')) {
+          store.remove('token');
+        }
+        UserService.setCurrentUser(result.data.user);
+        UserService.setCurrentToken(result.data.token);
+        authManager.authenticate();
+        console.log(authManager.isAuthenticated());
+        //console.log(authManager.authenticate());
+        //$location.path('/dashboard');
         //console.log(jwtHelper.decodeToken(store.get('token')));
         //console.log(jwtHelper.getTokenExpirationDate(store.get('token')));
 

@@ -27,7 +27,7 @@ function quoteController($http, store, UserService) {
   function getOpenQuote () {
 
     $http.get('http://localhost:1337/quote/open').then(function success(response){
-      console.log('success');
+      //console.log('success');
       vm.openQuote = response.data.quote;
     });
     
@@ -47,7 +47,7 @@ function quoteController($http, store, UserService) {
   function getPrivateQuote () {
 
     $http.get('http://localhost:1337/quote/protected').then(function success(response){
-      console.log('success');
+      //console.log('success');
       vm.privateQuote = response.data.quote;
     });
     
