@@ -2,5 +2,10 @@
   <p class="header-title">
     <a ui-sref="home">Home</a>
     <a ui-sref="login">Login</a>
+    <a ui-sref="dashboard">Dashboard</a>
+    <span class="pull-right" style="color: white;">Welcome {{vm.username}} {{$root.isAuthenticated}}</span>
+    <div class="btn btn-default" ng-click="vm.logout()">logout</div>
+    <!--div class="btn btn-default" ng-if="isAuthenticated">isAuth</div>
+    <div class="btn btn-default" ng-if="!isAuthenticated">isNotAuth</div-->
   </p>
 </header>
