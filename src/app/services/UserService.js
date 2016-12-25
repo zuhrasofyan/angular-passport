@@ -20,15 +20,20 @@ function UserService(store, jwtHelper) {
 
   function getCurrentUser () {
     if (!currentUser) {
-      currentUser = store.get('user');
+      if (!store.get('user')) {
+        currentUser = {username: 'none'};
+      } else {
+        currentUser = store.get('user');
+      }
     }
     return currentUser;
   };
 
   function getCurrentToken() {
-    if (!currentToken) {
+    
+    //if (!currentToken) {
       currentToken = store.get('token');
-    }
+    //}
     // if (jwtHelper.isTokenExpired(store.get('token'))) {
     //   currentToken = null;
     // }

@@ -6,19 +6,21 @@ angular
     controllerAs: 'vm'
   });
 
-function headerController($rootScope, store, $location, authManager) {
+function headerController($rootScope, store, $location, authManager, AuthService, UserService) {
   var vm = this;
 
   // if(store.get('user')){
   //   vm.username = store.get('user').username;
   // } else vm.username = null;
 
+  function userName() {
+    var a = UserService.getCurrentUser();
+    return a.username;
+  }
 
   function logout(){
-    store.remove('user');
-    store.remove('token');
-    $location.path('/');
-    //authManager.
+    AuthService.logout();
   }
   vm.logout = logout;
+  vm.username = userName();
 }
