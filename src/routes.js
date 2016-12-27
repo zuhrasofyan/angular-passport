@@ -32,9 +32,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
 
 function loginRequired ($q, $location, authManager, $rootScope) {
   var deferred = $q.defer();
-  //var a = $rootScope.isAuthenticated;
-  var a = authManager.isAuthenticated;
-  if (a) {
+  var checkAuth = $rootScope.isAuthenticated;
+  //using authManager.isAuthenticated, unfortunately we can still access restricted state if we manually enter URL
+  //var a = authManager.isAuthenticated;
+  if (checkAuth) {
     deferred.resolve();
   } else {
     $location.path('/')
