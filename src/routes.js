@@ -18,7 +18,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
     })
     .state('dashboard', {
       url: '/dashboard',
-      component: 'dashboard'
+      component: 'dashboard',
+      resolve: {
+        loginRequired : loginRequired
+      }
     });
 
     // otherwise will take care of routing the user to the specified url
@@ -26,3 +29,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
 
     $httpProvider.interceptors.push('APIInterceptor');
 }
+
+function loginRequired ($q, $location, authManager, $rootScope) {
+  var deferred = $q.defer();
+  //var a = $rootScope.isAuthenticated;
+  var a = authManager.isAuthenticated;
+  if (a) {
+    deferred.resolve();
+  } else {
+    $location.path('/')
+  }
+  return deferred.promise;
+};

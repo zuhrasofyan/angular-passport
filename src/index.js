@@ -19,7 +19,7 @@ angular
         // Otherwise, redirect to the home route
         $rootScope.isAuthenticated = false;
         //do not use $state.go('login') since it will redirect everything to login even when in the unprotected state
-        $location.path('login');
+        //$location.path('/');
       }
     });
   });
