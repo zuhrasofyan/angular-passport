@@ -9,6 +9,7 @@ angular
 function headerController($rootScope, store, $location, authManager, AuthService, UserService) {
   var vm = this;
 
+  vm.isAuthenticated = $rootScope.isAuthenticated;
   // if(store.get('user')){
   //   vm.username = store.get('user').username;
   // } else vm.username = null;
