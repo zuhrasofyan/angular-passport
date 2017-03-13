@@ -26,6 +26,10 @@ Angular boilerplate front-end with passport to connect to REST API. Created usin
 * `gulp serve` to serve from tmp folder
 * `gulp build` to build production ready files (dist folder)
 
+### ERROR
+* TypeError: Cannot read property 'apply' of undefined
+Probably, you are installing gulp instead of gulp-cli. Run `npm install gulp-cli -g` to solve the problem
+
 ### ATTENTION!
 MIT License.
 For best experience to test all functionality, a (REST API) server with passport-type authentification is needed. This work aimed to quickly setup a front-end application with access to REST API + authentification using passport.
